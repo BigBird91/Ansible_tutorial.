@@ -1,0 +1,17 @@
+---
+- name: Install Apache on CentOS
+  become: yes              
+  hosts: all
+
+  tasks:
+    - name: Update package cache and install Apache
+      yum:
+        name: httpd            
+        state: present        
+      become: yes
+
+    - name: Start Apache service
+      service:
+        name: httpd            
+        state: started         
+        enabled: yes 
